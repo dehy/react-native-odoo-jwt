@@ -1,52 +1,50 @@
-# react-native-odoo-promise-based
+# react-native-odoo-jwt
 
-⚠️ This repository is no longer being maintained. Feel free to use it for reference and forking.
+React Native library for Odoo using the Fetch API, JSON-RPC and OpenID JWT.
 
-React Native library for Odoo using the Fetch API and JSON-RPC.
+This library is a fork of previous versions (See [Acknowledgements](#acknowledgements)). Its brings support for authenticating to Odoo with an OpenID JWT, through [foodcoop-odoo-proxy](https://github.com/dehy/foodcoop-odoo-proxy). It is written in TypeScript.
 
-This library is a modified version from the original repository and was created to allow authentication using Odoo session ids for in-app session persistence. Also server response handling was reimplemented using Promises instead of callback functions for convenience.
-
-**This package is still a work in progress** and hasn't been subjected to proper unit testing after the original repository was forked.
+**⚠️ This package is still a work in progress** and hasn't been subjected to proper unit testing.
 
 ## Installation
 
 ```bash
-$ npm install react-native-odoo-promise-based
+$ npm install react-native-odoo-jwt
 ```
 or
 ```bash
-$ yarn add react-native-odoo-promise-based
+$ yarn add react-native-odoo-jwt
 ```
 
 ## Usage
 
 Please refer to the Odoo [API documentation](https://www.odoo.com/documentation/11.0/webservices/odoo.html) if you need help structuring your database queries. I'll try to make a more thorough explanation in the future about how it works.
 
+You need the [odoo-proxy](https://github.com/dehy/foodcoop-odoo-proxy) which will handle the JWT authentication and forward the request to the Odoo server.
+
 **Creating Odoo connection instance**
 Before executing any kind of query operations, a connection instance must be established either with a username/password or with a previously retrieved session id.
 ```js
-import Odoo from 'react-native-odoo-promise-based'
+import Odoo from 'react-native-odoo-jwt'
 
 /* Create new Odoo connection instance */
 const odoo = new Odoo({
-  host: 'YOUR_SERVER_ADDRESS',
-  port: 8069, /* Defaults to 80 if not specified */
+  host: 'YOUR_PROXY_ADDRESS',
+  port: 443, /* Defaults to 443 if not specified */
+  protocol: 'https' /* Defaults to https if not specified */
   database: 'YOUR_DATABASE_NAME',
-  username: 'YOUR_USERNAME', /* Optional if using a stored session_id */
-  password: 'YOUR_PASSWORD', /* Optional if using a stored session_id */
-  sid: 'YOUR_SESSION_ID', /* Optional if using username/password */
-  protocol: 'https' /* Defaults to http if not specified */
 })
 
 ```
 
 **Connect**
-Returns a promise which resolves into an object containing the current users' data, including a session id which can be stored for future connections and session persistence.
+Before using this lib, you need to have generated a valid JSON Web Token somewhere. You can then pass it to the Odoo instance.
+
 ```js
-odoo.connect()
-.then(response => { /* ... */ })
-.catch(e => { /* ... */ })
+odoo.setToken(jwt_id_token);
 ```
+
+Connecting directly to Odoo with username/password is not needed, as it is the odoo-proxy who handles it. 
 
 **Get (Odoo Read)**
 Receives an Odoo database `model` string and a `params` object containing the `ids` you want to read and the `fields` you want to retrieve from each result.
@@ -161,4 +159,4 @@ This project is licensed under the MIT License - see the  [LICENSE.md](https://g
 
 ## Acknowledgements
 
-This project was built upon previous versions. It is a fork of [kevin3274](https://github.com/kevin3274/react-native-odoo)'s original React Native library which in turn is based of [saidimu](https://github.com/saidimu/odoo)'s Node.js library.
+This project was built upon previous versions. It is a fork of [cesargutierrezo](https://github.com/cesargutierrezo/react-native-odoo-promise-based)'s promised-based version, forked from [kevin3274](https://github.com/kevin3274/react-native-odoo)'s original React Native library which in turn is based of [saidimu](https://github.com/saidimu/odoo)'s Node.js library. 🤪

@@ -1,16 +1,18 @@
 {
-  "name": "react-native-odoo-promise-based",
+  "name": "react-native-odoo-jwt",
   "version": "0.7.0",
   "description": "React Native library for Odoo using Fetch API and JSON-RPC",
   "keywords": [
     "odoo",
     "openerp",
     "jsonrpc",
-    "react-native"
+    "react-native",
+    "openid",
+    "jwt"
   ],
-  "homepage": "https://github.com/cesar-gutierrez/react-native-odoo-promise-based",
+  "homepage": "https://github.com/dehy/react-native-odoo-jwt",
   "bugs": {
-    "url": "https://github.com/cesar-gutierrez/react-native-odoo-promise-based/issues"
+    "url": "https://github.com/dehy/react-native-odoo-jwt/issues"
   },
   "license": "MIT",
   "main": "./lib/index.ts",
@@ -19,13 +21,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cesar-gutierrez/react-native-odoo-promise-based.git"
+    "url": "git+https://github.com/dehy/react-native-odoo-jwt.git"
   },
   "scripts": {
     "test": "mocha test"
   },
-  "author": "César Gutiérrez Olivares <hello@cesar.codes>",
+  "author": "Arnaud de Mouhy <git@admds.net>",
   "maintainers": [
+    "Arnaud de Mouhy <git@admds.net>",
     "César Gutiérrez Olivares <hello@cesar.codes>",
     "Nichita Gruia <gruianichita@gmail.com>",
     "Aidos Kakimzhanov <aidos.kakimzhan@gmail.com>"

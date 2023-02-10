@@ -34,12 +34,12 @@ const Odoo = (config: Config) => {
   config = config || {}
 
   const host = config.host
-  const port = config.port || 80
+  const port = config.port || 443
   const database = config.database
   let username = config.username || null
   const password = config.password || null
   let sid: string | null | undefined = config.sid || null
-  const protocol = config.protocol || 'http'
+  const protocol = config.protocol || 'https'
   let authToken: string | undefined;
 
   let cookie: string | null = null;

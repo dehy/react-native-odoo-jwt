@@ -29,10 +29,7 @@ import Odoo from 'react-native-odoo-jwt'
 
 /* Create new Odoo connection instance */
 const odoo = new Odoo({
-  host: 'YOUR_PROXY_ADDRESS',
-  port: 443, /* Defaults to 443 if not specified */
-  protocol: 'https' /* Defaults to https if not specified */
-  database: 'YOUR_DATABASE_NAME',
+  endpoint: 'https://odoo.mydomain.com',
 })
 
 ```
@@ -44,7 +41,7 @@ Before using this lib, you need to have generated a valid JSON Web Token somewhe
 odoo.setToken(jwt_id_token);
 ```
 
-Connecting directly to Odoo with username/password is not needed, as it is the odoo-proxy who handles it. 
+Connecting directly to Odoo with username/password is not supported, as it is the odoo-proxy who handles it. 
 
 **Get (Odoo Read)**
 Receives an Odoo database `model` string and a `params` object containing the `ids` you want to read and the `fields` you want to retrieve from each result.

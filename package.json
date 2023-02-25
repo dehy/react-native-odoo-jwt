@@ -1,7 +1,7 @@
 {
   "name": "react-native-odoo-jwt",
-  "version": "0.7.0",
-  "description": "React Native library for Odoo using Fetch API and JSON-RPC",
+  "version": "0.8.0",
+  "description": "React Native library for Odoo using Fetch API and JSON-RPC with JWT Token",
   "keywords": [
     "odoo",
     "openerp",
